@@ -96,6 +96,10 @@ impl Emu {
         }
     }
 
+   pub fn get_st(&self) ->u8{
+        self.st
+    }
+
     fn push(&mut self, val: u16) {
         self.stack[self.sp as usize] = val;
         self.sp += 1;
@@ -394,7 +398,7 @@ impl Emu {
                     self.v_reg[idx] = self.ram[i + idx];
                 }
             },
-            
+
             (_, _, _, _) => println!("Unimplemented opcode: {:#4x}", op),
         }
     }

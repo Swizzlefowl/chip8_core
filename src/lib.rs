@@ -89,15 +89,12 @@ impl Emu {
             self.dt -= 1;
         }
         if self.st > 0 {
-            if self.st == 1 {
-                // BEEP
-            }
             self.st -= 1;
         }
     }
 
-   pub fn get_st(&self) ->u8{
-        self.st
+   pub fn get_beep(&self) ->bool{
+        self.st > 0
     }
 
     fn push(&mut self, val: u16) {

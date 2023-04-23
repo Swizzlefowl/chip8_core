@@ -1,4 +1,5 @@
 use rand::random;
+use std::fmt;
 
 pub const SCREEN_WIDTH: usize = 64;
 pub const SCREEN_HEIGHT: usize = 32;
@@ -31,6 +32,7 @@ const FONTSET: [u8; FONTSET_SIZE] = [
     0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
     0xF0, 0x80, 0xF0, 0x80, 0x80, // F
 ];
+#[derive(Debug)]
 pub struct Emu {
     pc: u16,
     ram: [u8; RAM_SIZE],
@@ -412,5 +414,12 @@ impl Emu {
         let start = START_ADDR as usize;
         let end = (START_ADDR as usize) + data.len();
         self.ram[start..end].copy_from_slice(data);
+    }
+}
+
+
+impl fmt::Display for Emu{
+ fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "dt: {}\nst: {}", self.dt, self.st)
     }
 }

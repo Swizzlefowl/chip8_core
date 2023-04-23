@@ -58,7 +58,7 @@ impl Emu {
             stack: [0; STACK_SIZE],
             keys: [false; NUM_KEYS],
             dt: 0,
-            st: 0,
+            st: 0
         };
         new_emu.ram[..FONTSET_SIZE].copy_from_slice(&FONTSET);
         new_emu
